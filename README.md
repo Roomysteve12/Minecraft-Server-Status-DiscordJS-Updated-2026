@@ -4,6 +4,8 @@
 
 **Minecraft Server Status Discord Bot**
 
+**don't worry i will add more features soon!!**
+
 <p>Upgraded To DiscordJS 14!!</p>
 
 **DiscordJS**
