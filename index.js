@@ -16,7 +16,7 @@ if(config.software === 'java') {
 }
 
 // Main JS
-const { Client, GatewayIntentBits, Partials, Collection } = require('discord.js')
+const { Client, GatewayIntentBits, Partials, Collection, PermissionFlagsBits } = require('discord.js')
 const Discord = require('discord.js')
 const client = new Client({
   intents: [
@@ -147,7 +147,7 @@ client.on('interactionCreate', async (inter) => {
   const cmd = client.slash.get(inter.commandName);
   if(!cmd) return;
 
-  const role = config.role
+  const role = config.role || inter.member.permissions.has(PermissionFlagsBits.Administrator)
   if(role) {
   const only = inter.member.roles.cache.has(role)
   if(!only) return inter.reply({ content: `Only <@&${config.role}> Can Used This Command!`, ephemeral: true })
