@@ -15,18 +15,6 @@ if(config.software === 'java') {
   if(!config.port) config.port = 25565
 }
 
-// 24/7 Uptime
-
-const express = require('express')
-const app = express()
-app.listen('3000', () => {
-  console.log('Port: 3000'. green)
-})
-
-app.get('/', (req, res) => {
-  res.send('lol')
-})
-
 // Main JS
 const { Client, GatewayIntentBits, Partials, Collection } = require('discord.js')
 const Discord = require('discord.js')
@@ -51,7 +39,7 @@ const {
 client.slash = new Discord.Collection();
 
 ['slash'].forEach(handler => {
-	require(`./handlers/${handler}`)(client);
+  require(`./handlers/${handler}`)(client);
 });
 
 client.on('ready', async () => {
@@ -75,7 +63,7 @@ client.on('ready', async () => {
       if(online === true) {
         client.user.setPresence({ activities: [{ name: `${motd.raw} | Status: Online | Players: ${players.online}/${players.max}` }]  })
 
-	if(name.length === "24") client.user.setPresence({ activities: [{ name: `Bedrock Server | Status: Online | Players: ${players.online}/${players.max}` }]  })      
+  if(motd.raw.length === "24") client.user.setPresence({ activities: [{ name: `Bedrock Server | Status: Online | Players: ${players.online}/${players.max}` }]  })      
       }
     }
 
@@ -93,8 +81,8 @@ client.on('ready', async () => {
 
       if(online === true) {
 
-	if(name.length === "24") client.user.setPresence({ activities: [{ name: `Java Server | Status: Online | Players: ${players.online}/${players.max}` }]  })      
-	      
+  if(motd.raw.length === "24") client.user.setPresence({ activities: [{ name: `Java Server | Status: Online | Players: ${players.online}/${players.max}` }]  })      
+
         client.user.setPresence({ activities: [{ name: `Status: Online | Players: ${players.online}/${players.max}` }]  })
       }
     }
@@ -113,7 +101,7 @@ client.on('ready', async () => {
       if(debug.query === false) {
       client.user.setPresence({ activities: [{ name: `Status: Offline` }]  })
       }
-      
+
       let uptime = db.get('up')
 
       if(!online && online === false) {
@@ -128,7 +116,7 @@ client.on('ready', async () => {
         if(uptime) db.add('up', 1)
       }
     } 
-    
+
     if(config.software === 'java') {
       const fetch = require('node-fetch')
 
@@ -158,13 +146,13 @@ client.on('interactionCreate', async (inter) => {
   if(!inter.isButton) return;
   const cmd = client.slash.get(inter.commandName);
   if(!cmd) return;
-	
+
   const role = config.role
   if(role) {
   const only = inter.member.roles.cache.has(role)
   if(!only) return inter.reply({ content: `Only <@&${config.role}> Can Used This Command!`, ephemeral: true })
   }
-  
+
   cmd.run(client, inter, config, db);
 })
 
