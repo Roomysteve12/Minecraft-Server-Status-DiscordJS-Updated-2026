@@ -147,7 +147,7 @@ client.on('interactionCreate', async (inter) => {
   const cmd = client.slash.get(inter.commandName);
   if(!cmd) return;
 
-  const role = config.role || inter.member.permissions.has(PermissionFlagsBits.Administrator)
+  const role = config.role
   if(role) {
   const only = inter.member.roles.cache.has(role)
   if(!only) return inter.reply({ content: `Only <@&${config.role}> Can Used This Command!`, ephemeral: true })
