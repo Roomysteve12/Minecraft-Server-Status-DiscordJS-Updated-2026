@@ -97,7 +97,7 @@ client.on('ready', async () => {
     if(config.software === 'bedrock') {
       const fetch = require('node-fetch')
 
-      let { debug, motd, players, online } = await fetch(`https://api.mcsrvstat.us/bedrock/2/${config.ip}:${config.port}`).then(response => response.json());
+      let { debug, motd, players, online } = await fetch(`https://api.mcsrvstat.us/bedrock/3/${config.ip}:${config.port}`).then(response => response.json());
       if(debug.query === false) {
       client.user.setPresence({ activities: [{ name: `Status: Offline` }]  })
       }
@@ -120,7 +120,7 @@ client.on('ready', async () => {
     if(config.software === 'java') {
       const fetch = require('node-fetch')
 
-      let { debug, motd, players, online } = await fetch(`https://api.mcsrvstat.us/2/${config.ip}:${config.port}`).then(response => response.json());
+      let { debug, motd, players, online } = await fetch(`https://api.mcsrvstat.us/3/${config.ip}:${config.port}`).then(response => response.json());
       if(debug.ping === false) {
       client.user.setPresence({ activities: [{ name: `Status: Offline` }]  })
       }
