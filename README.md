@@ -1,5 +1,7 @@
 # Minecraft-Server-Status-DiscordJS
 
+[Free Discord Bot Hosting](https://wispbyte.com/a?ref=user_yzvpj8)
+
 ## ABOUT US
 
 **Minecraft Server Status Discord Bot**
