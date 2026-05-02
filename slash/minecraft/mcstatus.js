@@ -80,7 +80,6 @@ run: async (client, inter, config, db) => {
       .setFooter({ text: 'Created By _roomysteve12'})
 
       inter.reply({ embeds: [embed] })
-      console.log(players)
     }
   }
   }
